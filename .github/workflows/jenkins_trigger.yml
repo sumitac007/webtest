@@ -3,6 +3,3 @@ on:
   push:
     branches:
       - q1a
-  pull_request:
-    branches:
-      - q1a
