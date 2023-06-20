@@ -2,4 +2,4 @@ name: Jenkins Trgger
 on:
   push:
     branches:
-      - q1a
+    - q1a
