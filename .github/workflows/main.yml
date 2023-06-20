@@ -1,9 +1,7 @@
 name: Merge Workflow
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - q1a
 
