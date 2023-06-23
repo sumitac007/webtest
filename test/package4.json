@@ -1,0 +1,48 @@
+{
+  "name": "frm-github-service",
+  "version": "1.0.0",
+  "description": "Wrapper to github rest apis",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "files": [
+    "./lib"
+  ],
+  "devDependencies": {
+    "@tsconfig/node18": "^2.0.1",
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "eslint": "^8.2.0",
+    "eslint-plugin-asurion": "git+https://github.com/asurion-private/frm-eslint-plugin-asurion.git",
+    "husky": "1.0.0-rc.13",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.8.8",
+    "snyk": "^1.1012.0",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1402.0",
+    "frm-logging": "github:asurion-private/frm-frm-logging#v3.0.0",
+    "frm-utils": "github:asurion-private/frm-frm-utils#v2.0.0",
+    "lodash": "^4.17.21",
+    "octokit": "^2.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "apiKey=$(node ./.husky/snykScan.js) && snyk auth $apiKey && snyk test --trust-policies --fail-on=all"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asurion-private/frm-github-service"
+  },
+  "author": "FRM",
+  "license": "ISC"
+}
